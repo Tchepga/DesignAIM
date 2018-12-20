@@ -1,0 +1,28 @@
+{
+    "sequences":[ 
+        {"id":"1","color":"Red","cars":[
+                {"id":"1", "speed_zone1":"110", "speed_zone2":"30" , "speed_inter":"80" , "turn":"South-left","lane":"North-right", "posInLine":"auto"},
+                {"id":"1", "speed_zone1":"110", "speed_zone2":"30" , "speed_inter":"80" , "turn":"West-left","lane":"North-right", "posInLine":"auto"},
+                {"id":"1", "speed_zone1":"110", "speed_zone2":"30" , "speed_inter":"80" , "turn":"North-left","lane":"East-right", "posInLine":"auto"}
+            ]
+        },
+        {"id":"1","color":"Blue","cars":[
+                {"id":"1", "speed_zone1":"110", "speed_zone2":"40" , "speed_inter":"80" , "turn":"West-left","lane":"South-right", "posInLine":"auto"},
+                {"id":"1", "speed_zone1":"110", "speed_zone2":"40" , "speed_inter":"80" , "turn":"Nord-left","lane":"South-right", "posInLine":"auto"},
+                {"id":"1", "speed_zone1":"110", "speed_zone2":"40" , "speed_inter":"80" , "turn":"South-left","lane":"West-right", "posInLine":"auto"}
+            ]
+        },
+        {"id":"1","color":"Yellow","cars":[
+                {"id":"1", "speed_zone1":"110", "speed_zone2":"40" , "speed_inter":"80" , "turn":"","lane":"South-right", "posInLine":"auto"},
+                {"id":"1", "speed_zone1":"110", "speed_zone2":"40" , "speed_inter":"80" , "turn":"South-left","lane":"West-right", "posInLine":"auto"},
+                {"id":"1", "speed_zone1":"110", "speed_zone2":"40" , "speed_inter":"80" , "turn":"South-left","lane":"West-right", "posInLine":"auto"}
+            ]
+        },
+        {"id":"1","color":"Black","cars":[
+                {"id":"1", "speed_zone1":"110", "speed_zone2":"40" , "speed_inter":"80" , "turn":"West-left","lane":"South-right", "posInLine":"auto"},
+                {"id":"1", "speed_zone1":"110", "speed_zone2":"40" , "speed_inter":"80" , "turn":"East-left","lane":"South-right", "posInLine":"auto"},
+                {"id":"1", "speed_zone1":"110", "speed_zone2":"40" , "speed_inter":"80" , "turn":"South-left","lane":"West-right", "posInLine":"auto"}
+            ]
+        }        
+    ]
+}

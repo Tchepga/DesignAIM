@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Projet Carrefour Autonome</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="app.js"></script>
+    <script src="jquery-3.2.1.js"></script>
+    <meta charset="utf-8">
+  </head>
+  
+  <body>
+    <div class="row">
+      <div>
+        <button id="bSpeedDown"  ><<<</button>
+        <button id="bPause"  >PAUSE</button>
+        <button id="bSpeedUp"  >>>></button>
+      </div>
+      <form class="form-inline" style="margin-left:15px;" id="configuration">
+        <div class="form-group mb-2">
+          <label for="staticEmail2"  class="sr-only" >Type </label>
+          <input type="number" id="typeConfig" min="1" max="3" class="form-control-plaintext" id="staticEmail2" placeholder="Type de configuration">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputPassword2" class="sr-only">Nbre Voie</label>
+          <input type="number" class="form-control" min="2" max="6" id="inputPassword2" placeholder="Nbre de voie" id="nbreVoie">
+        </div>
+        <button type="button" id="validate" class="btn btn-primary mb-2">valider</button>
+      </form>
+      <form class="form-inline" style="margin-left:405px;" id="configuration">
+        <div class="form-group mb-2">
+          <label for="staticEmail2"  class="sr-only" >Choisir la séquence </label>
+          <select name="sequences" id="sequences"  class="form-control">
+            <option value="1">sequence 1</option>
+            <option value="2">sequence 2</option>
+          </select>
+        </div>
+        <button type="button" id="validate" class="btn btn-warning mb-2">Choisir</button>
+      </form>
+    </div>  
+   
+      
+    <div>
+      <canvas id="mon_canvas" width="1000" height="1000">
+      Votre navigateurs ne supporte pas canvas...
+      </canvas>            
+    </div>
+      
+  </body>  
+</html>
