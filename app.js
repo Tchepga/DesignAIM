@@ -35,6 +35,7 @@ var Zone = Array() ;
  var centerEastCarY;// center of the right road
 
 var typeConfig=0;
+var sequence = 0;
 
 // Usefull to manage rotation
 var TO_RADIANS = Math.PI / 180;
@@ -271,7 +272,7 @@ function InitGloabalVars() {
    Zone.push(Zone1);
 
    
-   CreateAllCars(1);
+   CreateAllCars(1,0);
 
    widthCar = 20;
    heightCar = 20;
@@ -310,7 +311,22 @@ function InitGloabalVars() {
     nbCarEachLane["South-right"] = 0;
     nbCarEachLane["West-right"] = 0;
     nbCarEachLane["East-right"] = 0;
+    
+    //set Sequence
+    $( "#validate_sequence" ).click(function( event ) {
+        var sequence = $( "#sequences" ).val() ;
+        var typeConfig = $( "#typeConfig" ).val() ;
+        
+        if(typeConfig == NaN || typeConfig ==0)
+            typeConfig=1;
 
+        typeConfig = parseInt(typeConfig);
+        CreateAllCars(typeConfig,sequence);
+        console.log("type1 :" + typeConfig);
+        console.log("sequence :" + sequence);
+        
+        
+    });
     // set configuration
      $( "#validate" ).click(function( event ) {
         var typeConfig = $( "#typeConfig" ).val() ;
@@ -339,7 +355,7 @@ function InitGloabalVars() {
                 var Zone1 = {internalZone, criticalZone};
 
                 Zone.push(Zone1);
-                CreateAllCars(1); 
+                CreateAllCars(1,0); 
                 
                // Define the position of road
                centerNordCarX = widthBackground / 2 - lengthRoad / 2 ;
@@ -395,7 +411,7 @@ function InitGloabalVars() {
 
                
                 
-                CreateAllCars(2);
+                CreateAllCars(2,0);
 
                 // Define the position of road
                 centerNordCarX = widthBackground / 2 - lengthRoad / 2;
@@ -461,7 +477,7 @@ function InitGloabalVars() {
                 Zone.push(Zone1,Zone2,Zone3,Zone4);
                 
            
-                CreateAllCars(3);
+                CreateAllCars(3,0);
 
                 // Define the position of road
                 centerNordCarX = 5*widthBackground / 7 - 2*lengthRoad ;
@@ -523,7 +539,7 @@ function InitGloabalVars() {
 };
 
 // Get the json file where car speed for each zones are defined and creates every cars objects
-function CreateAllCars(typeConfig) {
+function CreateAllCars(typeConfig,sequences) {
     
     if (typeConfig == null)
         typeConfig = 1;
@@ -535,11 +551,25 @@ function CreateAllCars(typeConfig) {
             console.log(">>> Ajax_success >>>");
 
             var nbCars = 0;
-            for (var j = 0; j < data.sequences.length; j++) {
-                var carsfromJson = data.sequences[j].cars;
+            var htmlVoitureTable='<table class= "table">';
+            
+            htmlVoitureTable+='<thead class="thead-dark">';
+            htmlVoitureTable+='<tr><th>N°</th><th>Vmax</th><th>Vint</th><th>Vmin</th></tr></thead><tbody>';
+
+        
+            for (var k = 0; k < data.sequences[sequences].length; k++) {
+                var carsfromJson = data.sequences[sequences][k].cars;
 
                 // Create every cars and add them to the list (allCars)
                 for (var i = 0; i < carsfromJson.length; i++) {
+
+                    // load data to the voiture table div
+
+                    htmlVoitureTable+='<tr><td>'+carsfromJson[i].id+'</td>';
+                    htmlVoitureTable+='<td>'+carsfromJson[i].speed_zone1+'</td>';
+                    htmlVoitureTable+='<td>'+carsfromJson[i].speed_zone2+'</td>';
+                    htmlVoitureTable+='<td>'+carsfromJson[i].speed_inter+'</td></tr>';
+            
                     // constructor(lane, laneTurn, speed_zone1, speed_zone2, speed_inter, angle, posInLine, color)
                     allCars[nbCars++] = new Car(carsfromJson[i].lane,
                             carsfromJson[i].turn,
@@ -547,10 +577,13 @@ function CreateAllCars(typeConfig) {
                             carsfromJson[i].speed_zone2,
                             carsfromJson[i].speed_inter,
                             carsfromJson[i].posInLine,
-                            data.sequences[j].color);
+                            data.sequences[sequences][k].color);
                 }
             }
-
+        
+            console.log(htmlVoitureTable);
+            htmlVoitureTable+='<tbody/></table>';
+            document.getElementById("voitureTable").innerHTML = htmlVoitureTable;
             console.log(data);
             console.log("<<< Ajax_success <<<");
         },
@@ -623,14 +656,25 @@ function UpdateModel() {
         }
     }
 };
-
+var something = (function() {
+    var executed = false;
+    return function(){
+        if (!executed){
+            executed = true;
+            //alert("Collision").show();
+            alert("Collision").show();
+        
+        }
+    };
+})();
 function aabbCollide(car1, car2){
     if (car1.posX < car2.posX + widthCar &&
         car1.posX + widthCar > car2.posX &&
         car1.posY < car2.posY + heightCar &&
         heightCar + car1.posY > car2.posY) {
             console.log("collide");
-            if(DEBUG)
+            //something();
+            //if(DEBUG)
                 collidePoint[nbCollide++] = new CollidePoint((car1.posX+car1.posX+widthCar)/2
                 ,(car1.posY+car1.posY+heightCar)/2);
     }
