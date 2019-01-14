@@ -48,16 +48,25 @@ class CollidePoint{
     }
 
     display(context, color){
-        context.beginPath();
+        /*context.beginPath();
         context.rect(this.posX-2, this.posY-2, 4, 4);
+        context.strokeStyle = color;
+        context.stroke();*/
+        context.beginPath();
+        context.moveTo(this.posX - 4, this.posY - 4);
+        context.lineTo(this.posX + 4, this.posY + 4);
+        context.moveTo(this.posX + 4, this.posY - 4);
+        context.lineTo(this.posX - 4, this.posY + 4);
+        //ctx.stroke();
         context.strokeStyle = color;
         context.stroke();
     }
 }
 
 class Car {
-    constructor(lane, laneTurn, speed_zone1, speed_zone2, speed_inter, posInLine, color) {
+    constructor(lane, laneTurn, speed_zone1, speed_zone2, speed_inter, posInLine, id, color) {
         // Set attibutes of the new object car : 
+        this.id = id;
         this.lane = lane;
         this.laneTurn = laneTurn;
         this.posInLine = posInLine;
@@ -577,6 +586,7 @@ function CreateAllCars(typeConfig,sequences) {
                             carsfromJson[i].speed_zone2,
                             carsfromJson[i].speed_inter,
                             carsfromJson[i].posInLine,
+                            carsfromJson[i].id,
                             data.sequences[sequences][k].color);
                 }
             }
@@ -649,35 +659,42 @@ function UpdateModel() {
             }
         }
         
-        if(DEBUG){
+        //if(DEBUG){
             carTracePoint[carTrace++] = new CollidePoint((allCars[i].posX+allCars[i].posX+widthCar)/2,
                                                             (allCars[i].posY+allCars[i].posY+heightCar)/2);
             if(carTrace > 500)carTrace =0;
-        }
+       // }
     }
 };
-var something = (function() {
-    var executed = false;
-    return function(){
-        if (!executed){
-            executed = true;
-            //alert("Collision").show();
-            alert("Collision").show();
-        
-        }
-    };
-})();
+
+var x = 0;
+var y = 0;
+
 function aabbCollide(car1, car2){
-    if (car1.posX < car2.posX + widthCar &&
+    if(car1.posX < car2.posX + widthCar &&
         car1.posX + widthCar > car2.posX &&
         car1.posY < car2.posY + heightCar &&
         heightCar + car1.posY > car2.posY) {
-            console.log("collide");
-            //something();
-            //if(DEBUG)
+            //console.log(xcolis);
+            //console.log(ycolis);
+            if(x == 0 && y == 0 || x !== car1.id && y !== car2.id && x !== car2.id && y !== car1.id){
+                console.log("collide");
+                //console.log(car1.id);
+                //console.log(car2.id);
+
                 collidePoint[nbCollide++] = new CollidePoint((car1.posX+car1.posX+widthCar)/2
                 ,(car1.posY+car1.posY+heightCar)/2);
+                
+                alert("Collision entre la voiture " +car1.id+ " et la voiture "+ car2.id +" .\n Il y'a eu " + nbCollide + " collisions");
+                
+                console.log(nbCollide);
+                
+                x = car1.id;
+                y = car2.id;
+            }
+               
     }
+    
 }
 
 function carOnScreen(car){
@@ -741,6 +758,6 @@ function DisplayAll() {
 
       //Draw collision point
       for (var i = 0; i < collidePoint.length; i++) {
-        collidePoint[i].display(context, "blue");
+        collidePoint[i].display(context, "red");
     }
 };
