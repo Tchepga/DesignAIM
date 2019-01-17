@@ -22,6 +22,7 @@ var mapingLanePosX = Array();
 var mapingLanePosY = Array();
 var nbCarEachLane = Array();
 var Zone = Array() ;
+var onlyReadyCol = Array();
 
  // Define the position of road
  var centerNordCarX ;
@@ -664,6 +665,7 @@ function UpdateModel() {
                                                             (allCars[i].posY+allCars[i].posY+heightCar)/2);
             if(carTrace > 500)carTrace =0;
        // }
+       
     }
 };
 
@@ -681,12 +683,19 @@ function aabbCollide(car1, car2){
                 console.log("collide");
                 //console.log(car1.id);
                 //console.log(car2.id);
-
+               
                 collidePoint[nbCollide++] = new CollidePoint((car1.posX+car1.posX+widthCar)/2
                 ,(car1.posY+car1.posY+heightCar)/2);
                 
-                alert("Collision entre la voiture " +car1.id+ " et la voiture "+ car2.id +" .\n Il y'a eu " + nbCollide + " collisions");
+                if((onlyReadyCol[0]==car1.id && onlyReadyCol[1]==car2.id) || (onlyReadyCol[0]==car2.id && onlyReadyCol[1]==car1.id) )
+                {
+                    // nothing
+                }else
+                    alert("Collision entre la voiture " +car1.id+ " et la voiture "+ car2.id +" .\n Il y'a eu " + nbCollide + " collisions");
                 
+                onlyReadyCol[0]=car1.id; 
+                onlyReadyCol[1]=car2.id;
+            
                 console.log(nbCollide);
                 
                 x = car1.id;
