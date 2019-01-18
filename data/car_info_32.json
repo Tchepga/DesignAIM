@@ -14,7 +14,7 @@
                 ]
             },
             {"id":"3","color":"Yellow","cars":[
-                    {"id":"7", "speed_zone1":"100", "speed_zone2":"40" , "speed_inter":"80" , "turn":"","lane":"South-right", "posInLine":"auto"},
+                    {"id":"7", "speed_zone1":"110", "speed_zone2":"40" , "speed_inter":"80" , "turn":"","lane":"South-right", "posInLine":"auto"},
                     {"id":"8", "speed_zone1":"150", "speed_zone2":"40" , "speed_inter":"80" , "turn":"South-left","lane":"West-right", "posInLine":"auto"},
                     {"id":"9", "speed_zone1":"110", "speed_zone2":"40" , "speed_inter":"80" , "turn":"South-left","lane":"West-right", "posInLine":"auto"}
                 ]
@@ -40,14 +40,14 @@
                 ]
             },
             {"id":"1","color":"Yellow","cars":[
-                    {"id":"7", "speed_zone1":"110", "speed_zone2":"40" , "speed_inter":"80" , "turn":"West-left","lane":"East-right", "posInLine":"auto"},
-                    {"id":"8", "speed_zone1":"105", "speed_zone2":"45" , "speed_inter":"70" , "turn":"South-left","lane":"West-right", "posInLine":"auto"},
+                    {"id":"7", "speed_zone1":"120", "speed_zone2":"40" , "speed_inter":"80" , "turn":"West-left","lane":"East-right", "posInLine":"auto"},
+                    {"id":"8", "speed_zone1":"105", "speed_zone2":"45" , "speed_inter":"80" , "turn":"South-left","lane":"West-right", "posInLine":"auto"},
                     {"id":"9", "speed_zone1":"100", "speed_zone2":"40" , "speed_inter":"70" , "turn":"South-left","lane":"West-right", "posInLine":"auto"}
                 ]
             },
             {"id":"1","color":"Black","cars":[
-                    {"id":"10", "speed_zone1":"100", "speed_zone2":"40" , "speed_inter":"80" , "turn":"West-left","lane":"South-right", "posInLine":"auto"},
-                    {"id":"11", "speed_zone1":"100", "speed_zone2":"40" , "speed_inter":"80" , "turn":"East-left","lane":"South-right", "posInLine":"auto"},
+                    {"id":"10", "speed_zone1":"90", "speed_zone2":"40" , "speed_inter":"80" , "turn":"West-left","lane":"South-right", "posInLine":"auto"},
+                    {"id":"11", "speed_zone1":"90", "speed_zone2":"40" , "speed_inter":"80" , "turn":"East-left","lane":"South-right", "posInLine":"auto"},
                     {"id":"12", "speed_zone1":"90", "speed_zone2":"40" , "speed_inter":"80" , "turn":"South-left","lane":"West-right", "posInLine":"auto"}
                 ]
             } 

@@ -340,193 +340,247 @@ function InitGloabalVars() {
     // set configuration
      $( "#validate" ).click(function( event ) {
         var typeConfig = $( "#typeConfig" ).val() ;
+        var voie = $("#voie").val();
+
         var typeInt = parseInt(typeConfig)
-    
-        switch(typeInt)
-        {
-            case 1:
-                imgBackground.src = "image/background.png";
+        if(voie==0 || !voie)
+            switch(typeInt)
+            {
+                case 1:
+                    imgBackground.src = "image/background.png";
 
-                //empty my table zone
-                Zone = [];
-                var internalZone=[];
-                var criticalZone=[];
+                    //empty my table zone
+                    Zone = [];
+                    var internalZone=[];
+                    var criticalZone=[];
 
-                internalZone['West-right'] = 255;
-                internalZone['East-right'] = 775; 
-                internalZone['North-right'] = 255;
-                internalZone['South-right'] = 775;
+                    internalZone['West-right'] = 255;
+                    internalZone['East-right'] = 775; 
+                    internalZone['North-right'] = 255;
+                    internalZone['South-right'] = 775;
 
-                criticalZone['West-right'] = 450;
-                criticalZone['East-right'] = 550; 
-                criticalZone['North-right'] = 450;
-                criticalZone['South-right'] = 550;
+                    criticalZone['West-right'] = 450;
+                    criticalZone['East-right'] = 550; 
+                    criticalZone['North-right'] = 450;
+                    criticalZone['South-right'] = 550;
 
-                var Zone1 = {internalZone, criticalZone};
+                    var Zone1 = {internalZone, criticalZone};
 
-                Zone.push(Zone1);
-                CreateAllCars(1,0); 
-                
-               // Define the position of road
-               centerNordCarX = widthBackground / 2 - lengthRoad / 2 ;
-               centerSudCarX = widthBackground / 2 - lengthRoad / 2 + widthCar ;
-               centerWestCarX = pos1stCar ;
-               centerEastCarX = widthBackground - pos1stCar - widthCar;
-
-                centerNordCarY = pos1stCar;
-                centerSudCarY = heightBackground - pos1stCar - heightCar;
-                centerWestCarY = heightBackground / 2 + lengthRoad / 2 - heightCar / 2;// center of the right road
-                centerEastCarY = heightBackground / 2 - lengthRoad / 2 - heightCar / 2;// center of the right road
-
-                mapingLanePosX["North-right"] = centerNordCarX;// center of the right road
-                mapingLanePosX["South-right"] = centerSudCarX;// center of the right road
-
-                mapingLanePosX["West-right"] = centerWestCarX ;
-                mapingLanePosX["East-right"] = centerEastCarX ;
-
-                // Set the position Y of the fisrt car of each lane
-                mapingLanePosY["North-right"] = centerNordCarY ;
-                mapingLanePosY["South-right"] = centerSudCarY ;
-                mapingLanePosY["West-right"] = centerWestCarY ;// center of the right road
-                mapingLanePosY["East-right"] =centerEastCarY ;// center of the right road
-
-                nbCarEachLane["North-right"] = 0;
-                nbCarEachLane["South-right"] = 0;
-                nbCarEachLane["West-right"] = 0;
-                nbCarEachLane["East-right"] = 0;
-               
-            break;
-    
-            case 2:
-                imgBackground.src = "image/background_2.png";
-
-                //empty my table zone
-                Zone = [];
-
-                var internalZone=[];
-                var criticalZone=[];
-
-                internalZone['West-right'] = 375;internalZone['East-right'] = 625; internalZone['North-right'] = 175;internalZone['South-right'] = 425;
-                criticalZone['West-right'] = 445;criticalZone['East-right'] = 555; criticalZone['North-right'] = 260; criticalZone['South-right'] = 360; 
-                var Zone1 = {internalZone, criticalZone};
-
-                var internalZone=[];
-                var criticalZone=[];
-                internalZone['West-right'] = 375;internalZone['East-right'] = 625; internalZone['North-right'] = 535;internalZone['South-right'] = 795;
-                criticalZone['West-right'] = 445;criticalZone['East-right'] = 555; criticalZone['North-right'] = 610; criticalZone['South-right'] = 715;
-                var Zone2 = {internalZone, criticalZone};
-
-                Zone.push(Zone1);
-                Zone.push(Zone2);
-
-               
-                
-                CreateAllCars(2,0);
-
+                    Zone.push(Zone1);
+                    CreateAllCars(1,0); 
+                    
                 // Define the position of road
-                centerNordCarX = widthBackground / 2 - lengthRoad / 2;
+                centerNordCarX = widthBackground / 2 - lengthRoad / 2 ;
                 centerSudCarX = widthBackground / 2 - lengthRoad / 2 + widthCar ;
                 centerWestCarX = pos1stCar ;
                 centerEastCarX = widthBackground - pos1stCar - widthCar;
 
-                centerNordCarY = pos1stCar;
-                centerSudCarY = heightBackground - pos1stCar - heightCar;
-                centerWestCarY = 2*heightBackground / 7 + lengthRoad / 2 - heightCar / 2; // center of the right road
-                centerEastCarY = 2*heightBackground / 7 - lengthRoad / 2 + heightCar / 2; // center of the right road
+                    centerNordCarY = pos1stCar;
+                    centerSudCarY = heightBackground - pos1stCar - heightCar;
+                    centerWestCarY = heightBackground / 2 + lengthRoad / 2 - heightCar / 2;// center of the right road
+                    centerEastCarY = heightBackground / 2 - lengthRoad / 2 - heightCar / 2;// center of the right road
+
+                    mapingLanePosX["North-right"] = centerNordCarX;// center of the right road
+                    mapingLanePosX["South-right"] = centerSudCarX;// center of the right road
+
+                    mapingLanePosX["West-right"] = centerWestCarX ;
+                    mapingLanePosX["East-right"] = centerEastCarX ;
+
+                    // Set the position Y of the fisrt car of each lane
+                    mapingLanePosY["North-right"] = centerNordCarY ;
+                    mapingLanePosY["South-right"] = centerSudCarY ;
+                    mapingLanePosY["West-right"] = centerWestCarY ;// center of the right road
+                    mapingLanePosY["East-right"] =centerEastCarY ;// center of the right road
+
+                    nbCarEachLane["North-right"] = 0;
+                    nbCarEachLane["South-right"] = 0;
+                    nbCarEachLane["West-right"] = 0;
+                    nbCarEachLane["East-right"] = 0;
                 
-                mapingLanePosX["North-right"] = centerNordCarX;// center of the right road
-                mapingLanePosX["South-right"] = centerSudCarX;// center of the right road
-                mapingLanePosX["West-right"] = centerWestCarX ;
-                mapingLanePosX["East-right"] = centerEastCarX ;
+                break;
+        
+                case 2:
+                    imgBackground.src = "image/background_2.png";
 
-                // Set the position Y of the fisrt car of each lane
-                mapingLanePosY["North-right"] = centerNordCarY ;
-                mapingLanePosY["South-right"] = centerSudCarY ;
-                mapingLanePosY["West-right"] = centerWestCarY ;// center of the right road
-                mapingLanePosY["East-right"] =centerEastCarY ;// center of the right road
+                    //empty my table zone
+                    Zone = [];
 
-                nbCarEachLane["North-right"] = 0;
-                nbCarEachLane["South-right"] = 0;
-                nbCarEachLane["West-right"] = 0;
-                nbCarEachLane["East-right"] = 0;
-               
-            break;
+                    var internalZone=[];
+                    var criticalZone=[];
+
+                    internalZone['West-right'] = 375;internalZone['East-right'] = 625; internalZone['North-right'] = 175;internalZone['South-right'] = 425;
+                    criticalZone['West-right'] = 445;criticalZone['East-right'] = 555; criticalZone['North-right'] = 260; criticalZone['South-right'] = 360; 
+                    var Zone1 = {internalZone, criticalZone};
+
+                    var internalZone=[];
+                    var criticalZone=[];
+                    internalZone['West-right'] = 375;internalZone['East-right'] = 625; internalZone['North-right'] = 535;internalZone['South-right'] = 795;
+                    criticalZone['West-right'] = 445;criticalZone['East-right'] = 555; criticalZone['North-right'] = 610; criticalZone['South-right'] = 715;
+                    var Zone2 = {internalZone, criticalZone};
+
+                    Zone.push(Zone1);
+                    Zone.push(Zone2);
+
+                
+                    
+                    CreateAllCars(2,0);
+
+                    // Define the position of road
+                    centerNordCarX = widthBackground / 2 - lengthRoad / 2;
+                    centerSudCarX = widthBackground / 2 - lengthRoad / 2 + widthCar ;
+                    centerWestCarX = pos1stCar ;
+                    centerEastCarX = widthBackground - pos1stCar - widthCar;
+
+                    centerNordCarY = pos1stCar;
+                    centerSudCarY = heightBackground - pos1stCar - heightCar;
+                    centerWestCarY = 2*heightBackground / 7 + lengthRoad / 2 - heightCar / 2; // center of the right road
+                    centerEastCarY = 2*heightBackground / 7 - lengthRoad / 2 + heightCar / 2; // center of the right road
+                    
+                    mapingLanePosX["North-right"] = centerNordCarX;// center of the right road
+                    mapingLanePosX["South-right"] = centerSudCarX;// center of the right road
+                    mapingLanePosX["West-right"] = centerWestCarX ;
+                    mapingLanePosX["East-right"] = centerEastCarX ;
+
+                    // Set the position Y of the fisrt car of each lane
+                    mapingLanePosY["North-right"] = centerNordCarY ;
+                    mapingLanePosY["South-right"] = centerSudCarY ;
+                    mapingLanePosY["West-right"] = centerWestCarY ;// center of the right road
+                    mapingLanePosY["East-right"] =centerEastCarY ;// center of the right road
+
+                    nbCarEachLane["North-right"] = 0;
+                    nbCarEachLane["South-right"] = 0;
+                    nbCarEachLane["West-right"] = 0;
+                    nbCarEachLane["East-right"] = 0;
+                
+                break;
+        
+                case 3:
+                
+                    imgBackground.src = "image/background_3.png";
+
+                    Zone = [];
+
+                    var internalZone=[];
+                    var criticalZone=[];
+
+                    internalZone['West-right'] = 175;internalZone['East-right'] = 425; internalZone['North-right'] = 175;internalZone['South-right'] = 425;
+                    criticalZone['West-right'] = 245;criticalZone['East-right'] = 355; criticalZone['North-right'] = 260; criticalZone['South-right'] = 360; 
+                    var Zone1 = {internalZone, criticalZone};
+
+                    var internalZone=[];
+                    var criticalZone=[];
+                    internalZone['West-right'] = 535;internalZone['East-right'] = 785; internalZone['North-right'] = 175;internalZone['South-right'] = 425;
+                    criticalZone['West-right'] = 605;criticalZone['East-right'] = 715; criticalZone['North-right'] = 260; criticalZone['South-right'] = 360;
+                    var Zone2 = {internalZone, criticalZone};
+
+                    var internalZone=[];
+                    var criticalZone=[];
+                    internalZone['West-right'] = 175;internalZone['East-right'] = 425; internalZone['North-right'] = 530;internalZone['South-right'] = 780;
+                    criticalZone['West-right'] = 245;criticalZone['East-right'] = 355; criticalZone['North-right'] = 615; criticalZone['South-right'] = 715;
+                    var Zone3 = {internalZone, criticalZone};
+
+                    var internalZone=[];
+                    var criticalZone=[];
+                    internalZone['West-right'] = 530;internalZone['East-right'] = 785; internalZone['North-right'] = 530;internalZone['South-right'] = 785;
+                    criticalZone['West-right'] = 600;criticalZone['East-right'] = 715; criticalZone['North-right'] = 610; criticalZone['South-right'] = 715;
+                    var Zone4 = {internalZone, criticalZone};
+
     
-            case 3:
+                    Zone.push(Zone1,Zone2,Zone3,Zone4);
+                    
             
-                imgBackground.src = "image/background_3.png";
+                    CreateAllCars(3,0);
 
-                Zone = [];
+                    // Define the position of road
+                    centerNordCarX = 5*widthBackground / 7 - 2*lengthRoad ;
+                    centerSudCarX = 5*widthBackground / 7 - 2*lengthRoad  + widthCar ;
+                    centerWestCarX = pos1stCar ;
+                    centerEastCarX = widthBackground - pos1stCar - widthCar;
 
-                var internalZone=[];
-                var criticalZone=[];
+                    centerNordCarY = pos1stCar;
+                    centerSudCarY = heightBackground - pos1stCar - heightCar;
+                    centerWestCarY = 2*heightBackground / 7 + lengthRoad / 2 - heightCar / 2; // center of the right road
+                    centerEastCarY = 2*heightBackground / 7 - lengthRoad / 2 + heightCar / 2; // center of the right road
+                    
+                    mapingLanePosX["North-right"] = centerNordCarX;// center of the right road
+                    mapingLanePosX["South-right"] = centerSudCarX;// center of the right road
+                    mapingLanePosX["West-right"] = centerWestCarX ;
+                    mapingLanePosX["East-right"] = centerEastCarX ;
 
-                internalZone['West-right'] = 175;internalZone['East-right'] = 425; internalZone['North-right'] = 175;internalZone['South-right'] = 425;
-                criticalZone['West-right'] = 245;criticalZone['East-right'] = 355; criticalZone['North-right'] = 260; criticalZone['South-right'] = 360; 
-                var Zone1 = {internalZone, criticalZone};
+                    // Set the position Y of the fisrt car of each lane
+                    mapingLanePosY["North-right"] = centerNordCarY ;
+                    mapingLanePosY["South-right"] = centerSudCarY ;
+                    mapingLanePosY["West-right"] = centerWestCarY ;// center of the right road
+                    mapingLanePosY["East-right"] =centerEastCarY ;// center of the right road
 
-                var internalZone=[];
-                var criticalZone=[];
-                internalZone['West-right'] = 535;internalZone['East-right'] = 785; internalZone['North-right'] = 175;internalZone['South-right'] = 425;
-                criticalZone['West-right'] = 605;criticalZone['East-right'] = 715; criticalZone['North-right'] = 260; criticalZone['South-right'] = 360;
-                var Zone2 = {internalZone, criticalZone};
+                    nbCarEachLane["North-right"] = 0;
+                    nbCarEachLane["South-right"] = 0;
+                    nbCarEachLane["West-right"] = 0;
+                    nbCarEachLane["East-right"] = 0;
 
-                var internalZone=[];
-                var criticalZone=[];
-                internalZone['West-right'] = 175;internalZone['East-right'] = 425; internalZone['North-right'] = 530;internalZone['South-right'] = 780;
-                criticalZone['West-right'] = 245;criticalZone['East-right'] = 355; criticalZone['North-right'] = 615; criticalZone['South-right'] = 715;
-                var Zone3 = {internalZone, criticalZone};
-
-                var internalZone=[];
-                var criticalZone=[];
-                internalZone['West-right'] = 530;internalZone['East-right'] = 785; internalZone['North-right'] = 530;internalZone['South-right'] = 785;
-                criticalZone['West-right'] = 600;criticalZone['East-right'] = 715; criticalZone['North-right'] = 610; criticalZone['South-right'] = 715;
-                var Zone4 = {internalZone, criticalZone};
-
- 
-                Zone.push(Zone1,Zone2,Zone3,Zone4);
+                break;
+        
+                default:
+                imgBackground.src = "image/background.png";
                 
-           
-                CreateAllCars(3,0);
 
-                // Define the position of road
-                centerNordCarX = 5*widthBackground / 7 - 2*lengthRoad ;
-                centerSudCarX = 5*widthBackground / 7 - 2*lengthRoad  + widthCar ;
-                centerWestCarX = pos1stCar ;
-                centerEastCarX = widthBackground - pos1stCar - widthCar;
+                Zone.push(Zone1);
+            // CreateAllCars(1);
 
-                centerNordCarY = pos1stCar;
-                centerSudCarY = heightBackground - pos1stCar - heightCar;
-                centerWestCarY = 2*heightBackground / 7 + lengthRoad / 2 - heightCar / 2; // center of the right road
-                centerEastCarY = 2*heightBackground / 7 - lengthRoad / 2 + heightCar / 2; // center of the right road
-                
-                mapingLanePosX["North-right"] = centerNordCarX;// center of the right road
-                mapingLanePosX["South-right"] = centerSudCarX;// center of the right road
-                mapingLanePosX["West-right"] = centerWestCarX ;
-                mapingLanePosX["East-right"] = centerEastCarX ;
+                break;
+            }
+        if(voie==1)
+        {
+            imgBackground.src = "image/background_4.png";
 
-                // Set the position Y of the fisrt car of each lane
-                mapingLanePosY["North-right"] = centerNordCarY ;
-                mapingLanePosY["South-right"] = centerSudCarY ;
-                mapingLanePosY["West-right"] = centerWestCarY ;// center of the right road
-                mapingLanePosY["East-right"] =centerEastCarY ;// center of the right road
+            Zone = [];
+            var internalZone=[];
+            var criticalZone=[];
 
-                nbCarEachLane["North-right"] = 0;
-                nbCarEachLane["South-right"] = 0;
-                nbCarEachLane["West-right"] = 0;
-                nbCarEachLane["East-right"] = 0;
+            internalZone['West-right'] = 225;
+            internalZone['East-right'] = 740; 
+            internalZone['North-right'] = 255;
+            internalZone['South-right'] = 725;
 
-            break;
-    
-            default:
-            imgBackground.src = "image/background.png";
-            
+            criticalZone['West-right'] = 380;
+            criticalZone['East-right'] = 590; 
+            criticalZone['North-right'] = 410;
+            criticalZone['South-right'] = 590;
+
+            var Zone1 = {internalZone, criticalZone};
 
             Zone.push(Zone1);
-           // CreateAllCars(1);
+            CreateAllCars(1,0); 
+            
+            // Define the position of road
+            centerNordCarX = widthBackground / 2 - lengthRoad / 2 -10;
+            centerSudCarX = widthBackground / 2 - lengthRoad / 2 + widthCar -10;
+            centerWestCarX = pos1stCar -10;
+            centerEastCarX = widthBackground - pos1stCar - widthCar-10;
 
-            break;
+            centerNordCarY = pos1stCar;
+            centerSudCarY = heightBackground - pos1stCar - heightCar;
+            centerWestCarY = heightBackground / 2 + lengthRoad / 2 - heightCar / 2 -10;// center of the right road
+            centerEastCarY = heightBackground / 2 - lengthRoad / 2 - heightCar / 2 - 10;// center of the right road
+
+            mapingLanePosX["North-right"] = centerNordCarX;// center of the right road
+            mapingLanePosX["South-right"] = centerSudCarX;// center of the right road
+
+            mapingLanePosX["West-right"] = centerWestCarX ;
+            mapingLanePosX["East-right"] = centerEastCarX ;
+
+            // Set the position Y of the fisrt car of each lane
+            mapingLanePosY["North-right"] = centerNordCarY ;
+            mapingLanePosY["South-right"] = centerSudCarY ;
+            mapingLanePosY["West-right"] = centerWestCarY ;// center of the right road
+            mapingLanePosY["East-right"] =centerEastCarY ;// center of the right road
+
+            nbCarEachLane["North-right"] = 0;
+            nbCarEachLane["South-right"] = 0;
+            nbCarEachLane["West-right"] = 0;
+            nbCarEachLane["East-right"] = 0;
         }
+            
 
        
         
@@ -685,18 +739,23 @@ function aabbCollide(car1, car2){
                 //console.log(car2.id);
                
                 collidePoint[nbCollide++] = new CollidePoint((car1.posX+car1.posX+widthCar)/2
-                ,(car1.posY+car1.posY+heightCar)/2);
-                
+                                                            ,(car1.posY+car1.posY+heightCar)/2);
+                //console.log("avant collision  :" +onlyReadyCol);
+                //console.log("car 1  :" +car1.id+" car 2:"+ car2.id);
+
                 if((onlyReadyCol[0]==car1.id && onlyReadyCol[1]==car2.id) || (onlyReadyCol[0]==car2.id && onlyReadyCol[1]==car1.id) )
                 {
-                    // nothing
+                    console.log("ok");
                 }else
                     alert("Collision entre la voiture " +car1.id+ " et la voiture "+ car2.id +" .\n Il y'a eu " + nbCollide + " collisions");
                 
                 onlyReadyCol[0]=car1.id; 
                 onlyReadyCol[1]=car2.id;
+                //console.log("Après collision :" +onlyReadyCol);
+               
+                
             
-                console.log(nbCollide);
+                //console.log(nbCollide);
                 
                 x = car1.id;
                 y = car2.id;

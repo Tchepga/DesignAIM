@@ -23,7 +23,10 @@
         </div>
         <div class="form-group mx-sm-3 mb-2">
           <label for="inputPassword2" class="sr-only">Nbre Voie</label>
-          <input type="number" class="form-control" min="2" max="6"  placeholder="Nbre de voie" id="nbreVoie" style="width: 150px;">
+          <select name="voie" id="voie"  class="form-control">
+            <option value="0">simple</option>
+            <option value="1">complexe</option>
+          </select>
         </div>
         <button type="button" id="validate" class="btn btn-primary mb-2">valider</button>
       </form>
